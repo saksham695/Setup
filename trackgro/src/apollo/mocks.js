@@ -1,8 +1,7 @@
 import * as Factory from "factory.ts";
 import faker from "faker";
-import { Book, Author, Query } from "./types";
-import { MockedResponse } from "@apollo/client/testing";
-import { GET_BOOKS } from "./queries";
+
+import { GET_ITEM_DETAILS, GET_PROCESS } from "./queries";
 
 export const NutritionMock = Factory.Sync.makeFactory({
   calories: Factory.each(() => faker.random.number(10, 50)),
@@ -19,19 +18,29 @@ export const ItemDetailsMock = Factory.Sync.makeFactory({
 
 export const ProcessMock = Factory.Sync.makeFactory({
   processId: Factory.each(() => faker.random.uuid()),
-  heading: Factory.each(() => faker.random.words()),
-  content: Factory.each(() => faker.random.words()),
+  heading: Factory.each(() => faker.name.firstName()),
+  content: Factory.each(() => faker.random.words(10)),
   imageUrl: Factory.each(() => faker.image.avatar()),
 });
 
-export const booksQueryMock = {
+export const processQueryMock = {
   request: {
-    query: GET_BOOKS,
+    query: GET_PROCESS,
   },
   result: {
     data: {
-      books: ProcessMock.buildList(10),
-      //   nutrition: ItemDetailsMock.build(),
+      processes: ProcessMock.buildList(9),
+    },
+  },
+};
+
+export const itemDetailsQueryMock = {
+  request: {
+    query: GET_ITEM_DETAILS,
+  },
+  result: {
+    data: {
+      itemDetail: ItemDetailsMock.build(),
     },
   },
 };

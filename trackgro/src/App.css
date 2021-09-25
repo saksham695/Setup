@@ -1,6 +1,7 @@
 .main{
     padding-left: 18px;
     padding-right: 18px;
+    padding-bottom: 20px;
 }
 .header-text{
     background: -webkit-linear-gradient(#386641, #6A994E,#386641);
@@ -14,9 +15,88 @@
     /* font-family: 'Lato', sans-serif; */
 }
 
+.lato-bold-black{
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+
+}
+
+.lato-bold-red{
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20.4px;
+    color: #DE5753;
+}
+
+.lato-thin-red{
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #DE5753;
+}
+
+.loto-normal-grey{
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #585858;
+    line-height: 20.4px;
+}
+
+
+.lato-bolder-red{
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 19.2px;
+    color: #BC4749;
+}
+.lato-bold-dark-green{
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    color:#386641;
+
+}
+.lato-thin-dark-green{
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.4px;
+    color:#386641;
+}
+.lato-green{
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 20.4px;
+    color:#6A994E; 
+}
+
+.lato-bold-green{
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20.4px;
+    color:#6A994E; 
+}
+
+.lato-thin-black{
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13.2px;
+
+}
+
 .process-header-text{
-     background: -webkit-linear-gradient(#386641, #386641,#6DC77A,#386641,#386641);
-    -webkit-background-clip: text;  
+     background: linear-gradient(#386641, #386641,#6DC77A,#386641,#386641);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
     font-family: 'Lato', sans-serif;
     text-align: left;
     font-size: 22px;

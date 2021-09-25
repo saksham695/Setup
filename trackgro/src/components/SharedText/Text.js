@@ -1,5 +1,6 @@
 import React from "react";
 import "../../App.css";
+
 function Text({ text, customStyle = {}, customClassName = "text" }) {
   const overrideStyle = customStyle ? customStyle : { color: "black" };
   return (
