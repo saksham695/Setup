@@ -20,6 +20,7 @@ export const GET_PROCESS = gql`
     }
   }
 `;
+
 export const GET_ITEM_DETAILS = gql`
   query GetItemDetails {
     itemDetail {
@@ -31,6 +32,14 @@ export const GET_ITEM_DETAILS = gql`
         calories
         fat
       }
+    }
+  }
+`;
+
+export const GET_DETAILED_CONTENT = gql`
+  query GetDetailedContent {
+    content {
+      description
     }
   }
 `;

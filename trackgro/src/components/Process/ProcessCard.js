@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useQuery } from "@apollo/client";
 
 import BlackEffect from "../BackgroundEffect/BlackEffect";
 import BlueEffect from "../BackgroundEffect/BlueEffect";
@@ -19,10 +20,11 @@ import raphael_dry from "../../assets/icons/raphael_dry.png";
 import carbon_upgrade from "../../assets/icons/carbon_upgrade.png";
 
 import "./Process.css";
+import { GET_DETAILED_CONTENT, GET_PROCESS } from "../../apollo/queries";
 
 export default function ProcessCard(props) {
   const { process = {}, index, totalProcessesCount } = props;
-  const { heading, content, imageUrl } = process;
+  const { heading, content, imageUrl, processId } = process;
   const isOrignalOrientation = index % 2 === 0;
   const isLast = totalProcessesCount - 1 === index;
 
@@ -62,6 +64,7 @@ export default function ProcessCard(props) {
           isLastPath={isLastPath}
           icon1={icon1}
           icon2={icon2}
+          processId={processId}
         />
       )}
       {!isOrignalOrientation && (
@@ -75,6 +78,7 @@ export default function ProcessCard(props) {
           isLastPath={isLastPath}
           icon1={icon1}
           icon2={icon2}
+          processId={processId}
         />
       )}
     </div>
@@ -91,6 +95,7 @@ const LeftToRightAlignment = ({
   isLastPath,
   icon1,
   icon2,
+  processId,
 }) => {
   return (
     <div>
@@ -101,7 +106,12 @@ const LeftToRightAlignment = ({
           justifyContent: "space-between",
         }}
       >
-        <ContentComponent heading={heading} content={content} leftText={true} />
+        <ContentComponent
+          heading={heading}
+          content={content}
+          leftText={true}
+          processId={processId}
+        />
         <ProcessImageComponent imageUrl={imageUrl} />
       </div>
       {!isLast && (
@@ -127,6 +137,7 @@ const RightToLeftAlignment = ({
   isLastPath,
   icon1,
   icon2,
+  processId,
 }) => {
   return (
     <div>
@@ -142,6 +153,7 @@ const RightToLeftAlignment = ({
           heading={heading}
           content={content}
           leftText={false}
+          processId={processId}
         />
       </div>
       {!isLast && (
@@ -157,8 +169,14 @@ const RightToLeftAlignment = ({
   );
 };
 
-const ContentComponent = ({ heading, content, leftText }) => {
+const ContentComponent = ({ heading, content, leftText, processId }) => {
   const TEXT_ALIGN = leftText ? "left" : "right";
+  const [open, setOpen] = useState(false);
+
+  const onCloseSeeMore = (value) => {
+    setOpen(false);
+  };
+
   return (
     <div
       style={{
@@ -179,14 +197,51 @@ const ContentComponent = ({ heading, content, leftText }) => {
           customClassName="loto-normal-grey"
         />
       </div>
-      <Text
-        text="see more"
-        customClassName="lato-bolder-red"
-        customStyle={{
-          textAlign: TEXT_ALIGN,
-          color: "red",
-        }}
-      />
+      <div style={{ position: "relative" }}>
+        <div onClick={() => setOpen(true)}>
+          <Text
+            text="see more"
+            customClassName="lato-bolder-red"
+            customStyle={{
+              textAlign: TEXT_ALIGN,
+              color: "red",
+            }}
+          />
+        </div>
+
+        {open ? (
+          <div
+            style={{
+              width: 300,
+              backgroundColor: "white",
+              position: "absolute",
+              top: 0,
+              maxHeight: 60,
+              borderRadius: 10,
+              padding: 10,
+              zIndex: 10,
+              right: leftText ? -170 : -5,
+            }}
+          >
+            <Description processId={processId} closeSeeMore={onCloseSeeMore} />
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+};
+
+const Description = ({ processId, closeSeeMore }) => {
+  const { data = {}, loading, error } = useQuery(GET_DETAILED_CONTENT);
+  const content = data?.content || "";
+
+  console.log(data);
+  return (
+    <div onClick={() => closeSeeMore(false)}>
+      <Text text={content.description} customClassName="tooltip-text-style" />
+      <div style={{ position: "absolute", top: 6, right: 10 }}>
+        <Text text="X" customClassName="close-text-style" />
+      </div>
     </div>
   );
 };

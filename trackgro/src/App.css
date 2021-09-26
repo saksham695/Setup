@@ -105,6 +105,19 @@
 
 }
 
+.tooltip-text-style{
+    color:#637c68 ;
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    margin-top: 10;
+}
+.close-text-style{
+    color:#4e504e ;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+}
 .header-container{
     padding-top: 55px;
     justify-content: center;

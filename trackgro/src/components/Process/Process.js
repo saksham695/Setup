@@ -4,11 +4,10 @@ import { GET_PROCESS } from "../../apollo/queries";
 import ProcessCard from "./ProcessCard";
 import Text from "../SharedText/Text";
 
-export default function Process() {
+export default function Process({ productId }) {
   const { data = {}, loading, error } = useQuery(GET_PROCESS);
   // { variables: { id: 1 } }
   const { processes = [] } = data;
-  console.log("data", data);
   // if (error) return <p>{error.message}</p>;
   if (loading) return <p>Loading...</p>;
 

@@ -1,7 +1,7 @@
 import * as Factory from "factory.ts";
 import faker from "faker";
 
-import { GET_ITEM_DETAILS, GET_PROCESS } from "./queries";
+import { GET_DETAILED_CONTENT, GET_ITEM_DETAILS, GET_PROCESS } from "./queries";
 
 export const NutritionMock = Factory.Sync.makeFactory({
   calories: Factory.each(() => faker.random.number(10, 50)),
@@ -23,13 +23,17 @@ export const ProcessMock = Factory.Sync.makeFactory({
   imageUrl: Factory.each(() => faker.image.avatar()),
 });
 
+export const DetailedContentMock = Factory.Sync.makeFactory({
+  description: Factory.each(() => faker.random.words(10)),
+});
+
 export const processQueryMock = {
   request: {
     query: GET_PROCESS,
   },
   result: {
     data: {
-      processes: ProcessMock.buildList(9),
+      processes: ProcessMock.buildList(11),
     },
   },
 };
@@ -41,6 +45,17 @@ export const itemDetailsQueryMock = {
   result: {
     data: {
       itemDetail: ItemDetailsMock.build(),
+    },
+  },
+};
+
+export const detailedContentMock = {
+  request: {
+    query: GET_DETAILED_CONTENT,
+  },
+  result: {
+    data: {
+      content: DetailedContentMock.build(),
     },
   },
 };

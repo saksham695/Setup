@@ -6,7 +6,7 @@ import Text from "../SharedText/Text";
 import mouse from "../../assets/icons/mouse.png";
 import "./ProductDetail.css";
 
-export default function ProductDetail() {
+export default function ProductDetail({ productId }) {
   const { data = {}, loading, error } = useQuery(GET_ITEM_DETAILS);
   const { itemDetail = {} } = data;
   const { id, imageUrl, name, nutrition = {} } = itemDetail;
