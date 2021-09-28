@@ -9,11 +9,20 @@ export const NutritionMock = Factory.Sync.makeFactory({
   fat: Factory.each(() => faker.random.number(10, 50)),
 });
 
+export const UserMock = Factory.Sync.makeFactory({
+  userId: Factory.each(() => faker.random.uuid()),
+  name: Factory.each(() => faker.name.firstName()),
+  address: Factory.each(() => faker.random.number(10, 50)),
+});
+
 export const ItemDetailsMock = Factory.Sync.makeFactory({
   id: Factory.each(() => faker.random.uuid()),
   name: Factory.each(() => faker.name.firstName()),
   imageUrl: Factory.each(() => faker.image.image()),
   nutrition: NutritionMock.build(),
+  componyLogoUrl: faker.image.avatar(),
+  companyName: faker.name.firstName(),
+  user: UserMock.build(),
 });
 
 export const ProcessMock = Factory.Sync.makeFactory({

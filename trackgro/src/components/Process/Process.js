@@ -9,7 +9,7 @@ export default function Process({ productId }) {
   // { variables: { id: 1 } }
   const { processes = [] } = data;
   // if (error) return <p>{error.message}</p>;
-  if (loading) return <p>Loading...</p>;
+  // if (loading) return <p>Loading...</p>;
 
   return (
     <div style={{ marginTop: 90 }}>

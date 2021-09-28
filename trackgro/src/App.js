@@ -16,7 +16,6 @@ export default function App() {
   return (
     <Provider useMocks>
       <div className="main">
-        <Header />
         <ProductDetail id={productId} />
         <Process productId={productId} />
         <Footer />

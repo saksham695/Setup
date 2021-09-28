@@ -27,10 +27,17 @@ export const GET_ITEM_DETAILS = gql`
       id
       name
       imageUrl
+      componyLogoUrl
+      companyName
       nutrition {
         protein
         calories
         fat
+      }
+      user {
+        userId
+        name
+        address
       }
     }
   }
@@ -41,5 +48,17 @@ export const GET_DETAILED_CONTENT = gql`
     content {
       description
     }
+  }
+`;
+
+export const ADD_USER_DETAILS = gql`
+  mutation AddUserDetails(
+    $orderId: Int!
+    $name: String!
+    $phoneNumber: String!
+  ) {
+    orderId
+    name
+    phoneNumber
   }
 `;

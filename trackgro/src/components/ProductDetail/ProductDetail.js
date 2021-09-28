@@ -5,14 +5,28 @@ import CardContainer from "../Card/CardContainer";
 import Text from "../SharedText/Text";
 import mouse from "../../assets/icons/mouse.png";
 import "./ProductDetail.css";
+import Header from "../Header/Header";
 
 export default function ProductDetail({ productId }) {
   const { data = {}, loading, error } = useQuery(GET_ITEM_DETAILS);
   const { itemDetail = {} } = data;
-  const { id, imageUrl, name, nutrition = {} } = itemDetail;
+  const {
+    id,
+    imageUrl,
+    name,
+    nutrition = {},
+    user = {},
+    componyLogoUrl = "",
+    companyName = "",
+  } = itemDetail;
   const { calories = "", protein = "", fat = "" } = nutrition;
   return (
     <div>
+      <Header
+        componyLogoUrl={componyLogoUrl}
+        companyName={companyName}
+        productId={productId}
+      />
       <ProductDetailComponent imageUrl={imageUrl} />
       <div className="card-container">
         <CardContainer customStyle={{ padding: 18 }}>

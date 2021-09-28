@@ -54,6 +54,13 @@
     line-height: 19.2px;
     color: #BC4749;
 }
+.lato-bold-red{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    line-height: 16.8px;
+    color: #BC4749;
+}
+
 .lato-bold-dark-green{
     font-family: 'Lato', sans-serif;
     font-size: 20px;
@@ -75,6 +82,20 @@
     font-weight: 400;
     line-height: 20.4px;
     color:#6A994E; 
+}
+
+.lato-bold-green{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    line-height: 16.8px;
+    color:#6A994E; 
+}
+
+.lato-bold-medium-green{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    line-height: 16.8px;
+    color:#386641; 
 }
 
 .lato-bold-green{
@@ -118,6 +139,7 @@
     font-size: 12px;
     font-weight: 900;
 }
+
 .header-container{
     padding-top: 55px;
     justify-content: center;
@@ -139,4 +161,60 @@
 .header-container{
     display: flex;
     flex-direction: row;
+    align-items:baseline;
+}
+
+.header-left-text-style{
+    text-align: center;
+    font-size: 14;
+}
+
+.user-text-style{
+    font-family: 'Lato', sans-serif;
+    font-size: 16;
+    font-weight: 500;
+    line-height: 16.8px;
+    color:#596651; 
+}
+
+.input-style{
+    font-family: 'Lato', sans-serif;
+    border:0px;
+    border-bottom: 1px solid black;
+    border-color: #c7920c;
+    color: #386641;
+    font-size: 12px;
+}
+.input-label-style{
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    color: #386641;
+    font-weight: 500;
+  
+}
+.input-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    outline: none;
+    margin-top: 4px;
+
+}
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+.submit-button-style{
+    font-family: 'Lato', sans-serif;
+    background-color: #F2E8CF;
+    color: #386641;
+    border: 0px;
+    width: 100%;
+    margin-top: 8px;
+    padding: 6px;
+    border-radius: 6px;
+    font-weight: 700;
+}
+
+.form-container{
+    padding-top: 8px;
 }
