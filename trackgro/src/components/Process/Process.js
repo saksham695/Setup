@@ -12,10 +12,7 @@ export default function Process({ productId }) {
   } = useQuery(GET_PROCESS, {
     variables: { id: productId },
   });
-  // { variables: { id: 1 } }
   const { GetAllProcesses = [] } = data;
-  // if (error) return <p>{error.message}</p>;
-  // if (loading) return <p>Loading...</p>;
 
   return (
     <div style={{ marginTop: 90 }}>

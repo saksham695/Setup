@@ -6,7 +6,12 @@ import "../../App.css";
 import { useMutation } from "@apollo/client";
 import { ADD_USER_DETAILS } from "../../apollo/queries";
 
-export default function Header({ companyName, componyLogoUrl, productId }) {
+export default function Header({
+  companyName,
+  componyLogoUrl,
+  productId,
+  refreshPage,
+}) {
   const details = true;
   const [openPopUp, setPopUpState] = useState(false);
 
@@ -60,6 +65,7 @@ export default function Header({ companyName, componyLogoUrl, productId }) {
             closeSeeMore={closePopUp}
             companyName={companyName}
             productId={productId}
+            refreshPage={refreshPage}
           />
         </div>
       )}
@@ -67,14 +73,13 @@ export default function Header({ companyName, componyLogoUrl, productId }) {
   );
 }
 
-const Description = ({ closeSeeMore, companyName, productId }) => {
+const Description = ({ closeSeeMore, companyName, productId, refreshPage }) => {
   const SAMPLE_TEXT = `Thank you for your purchase.Please fill the details below to be a registered member of ${companyName} and enjoy the exclusive discounts and privileges`;
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [adddUserDetails, { data, loading, error }] =
     useMutation(ADD_USER_DETAILS);
-  console.log(error);
-  console.log(data, loading, error);
+
   const setUserName = (e) => {
     setName(e.target.value);
   };
@@ -83,11 +88,19 @@ const Description = ({ closeSeeMore, companyName, productId }) => {
     setNumber(e.target.value);
   };
 
-  const onSubmitClicked = (e) => {
+  const onSubmitClicked = async (e) => {
     e.preventDefault();
-    adddUserDetails({
+    const response = await adddUserDetails({
       variables: { input: { orderId: productId, name, phoneNumber: number } },
     });
+    console.log("Loading ", loading);
+    const { data = {} } = response;
+    const { AddUserDetails = "" } = data;
+    console.log("Response ", response);
+    if (AddUserDetails === "Success") {
+      refreshPage();
+    }
+
     closeSeeMore();
   };
 

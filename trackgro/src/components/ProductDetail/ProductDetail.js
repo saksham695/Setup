@@ -7,7 +7,7 @@ import mouse from "../../assets/icons/mouse.png";
 import "./ProductDetail.css";
 import Header from "../Header/Header";
 
-export default function ProductDetail({ productId }) {
+export default function ProductDetail({ productId, refreshPage }) {
   const {
     data = {},
     loading,
@@ -26,12 +26,14 @@ export default function ProductDetail({ productId }) {
     companyName = "",
   } = GetItemDetails;
   const { calories = "", protein = "", fat = "" } = nutrition;
+
   return (
     <div>
       <Header
         componyLogoUrl={componyLogoUrl}
         companyName={companyName}
         productId={productId}
+        refreshPage={refreshPage}
       />
       <ProductDetailComponent imageUrl={imageUrl} />
       <div className="card-container">

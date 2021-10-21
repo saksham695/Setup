@@ -13,10 +13,14 @@ export default function App() {
     setProductId(parseInt(productId));
   }, []);
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   return (
     <Provider>
       <div className="main">
-        <ProductDetail productId={productId} />
+        <ProductDetail productId={productId} refreshPage={refreshPage} />
         <Process productId={productId} />
         <Footer />
       </div>
