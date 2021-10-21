@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
 import Process from "./components/Process/Process";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 
@@ -13,10 +12,11 @@ export default function App() {
     const productId = window.location.pathname.split("/")[1];
     setProductId(parseInt(productId));
   }, []);
+
   return (
-    <Provider useMocks>
+    <Provider>
       <div className="main">
-        <ProductDetail id={productId} />
+        <ProductDetail productId={productId} />
         <Process productId={productId} />
         <Footer />
       </div>

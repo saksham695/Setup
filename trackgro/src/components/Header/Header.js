@@ -73,7 +73,7 @@ const Description = ({ closeSeeMore, companyName, productId }) => {
   const [number, setNumber] = useState("");
   const [adddUserDetails, { data, loading, error }] =
     useMutation(ADD_USER_DETAILS);
-
+  console.log(error);
   console.log(data, loading, error);
   const setUserName = (e) => {
     setName(e.target.value);
@@ -85,9 +85,9 @@ const Description = ({ closeSeeMore, companyName, productId }) => {
 
   const onSubmitClicked = (e) => {
     e.preventDefault();
-    // adddUserDetails({
-    //   variables: { orderId: productId, name, phoneNumber: number },
-    // });
+    adddUserDetails({
+      variables: { input: { orderId: productId, name, phoneNumber: number } },
+    });
     closeSeeMore();
   };
 

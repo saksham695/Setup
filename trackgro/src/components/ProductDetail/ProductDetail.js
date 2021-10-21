@@ -8,8 +8,14 @@ import "./ProductDetail.css";
 import Header from "../Header/Header";
 
 export default function ProductDetail({ productId }) {
-  const { data = {}, loading, error } = useQuery(GET_ITEM_DETAILS);
-  const { itemDetail = {} } = data;
+  const {
+    data = {},
+    loading,
+    error,
+  } = useQuery(GET_ITEM_DETAILS, {
+    variables: { id: productId },
+  });
+  const { GetItemDetails = {} } = data;
   const {
     id,
     imageUrl,
@@ -18,7 +24,7 @@ export default function ProductDetail({ productId }) {
     user = {},
     componyLogoUrl = "",
     companyName = "",
-  } = itemDetail;
+  } = GetItemDetails;
   const { calories = "", protein = "", fat = "" } = nutrition;
   return (
     <div>
@@ -57,7 +63,7 @@ export default function ProductDetail({ productId }) {
       </div>
       <div>
         <Text
-          text={`START YOUR JOURNEY ${name}`}
+          text={`START YOUR JOURNEY ${user?.name || ""}`}
           customStyle={{ textAlign: "center", marginTop: 18 }}
           customClassName="lato-thin-black"
         />
