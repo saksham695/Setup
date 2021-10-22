@@ -11,8 +11,9 @@ export default function Header({
   componyLogoUrl,
   productId,
   refreshPage,
+  user = "",
 }) {
-  const details = true;
+  const details = !!user;
   const [openPopUp, setPopUpState] = useState(false);
 
   const openDetailsComponent = () => {
@@ -23,6 +24,7 @@ export default function Header({
     setPopUpState(false);
   };
 
+  console.log("Details", details);
   return (
     <div className="header-container">
       <div>
@@ -31,7 +33,7 @@ export default function Header({
       <div className="header-text">
         <Text text={"trackagro.com"} />
       </div>
-      {!openPopUp && !!details && (
+      {!openPopUp && !details && (
         <div style={{ alignSelf: "flex-start" }} onClick={openDetailsComponent}>
           <Text
             text="Click Here"
@@ -51,7 +53,7 @@ export default function Header({
           />
         </div>
       )}
-      {!!details && openPopUp && (
+      {openPopUp && (
         <div
           style={{
             position: "absolute",
@@ -96,11 +98,9 @@ const Description = ({ closeSeeMore, companyName, productId, refreshPage }) => {
     console.log("Loading ", loading);
     const { data = {} } = response;
     const { AddUserDetails = "" } = data;
-    console.log("Response ", response);
     if (AddUserDetails === "Success") {
       refreshPage();
     }
-
     closeSeeMore();
   };
 

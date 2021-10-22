@@ -34,6 +34,7 @@ export default function ProductDetail({ productId, refreshPage }) {
         companyName={companyName}
         productId={productId}
         refreshPage={refreshPage}
+        // user={user}
       />
       <ProductDetailComponent imageUrl={imageUrl} />
       <div className="card-container">
